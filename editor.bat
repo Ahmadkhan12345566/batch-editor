@@ -11,29 +11,33 @@ goto echoname2
 )
 REM check if argument one is empty
 if "%1"=="" (
-ECHO Enter File Name Your want to edit
+ECHO What File Do You Wish to Edit?
 SET /P name=
 goto echoname
 ) 
 ) 
 
 :echoname
-ECHO Your Name  is %name%
 IF exist %name% (
+echo Creating a backup file of %name%
 copy %name% %name%.bck 
 notepad %name% 
+echo "Editing :" %name%
 goto exitt ) ELSE (
-echo "file not found"
+echo "file does not exists."
+echo Editing :" %name%
 goto exitt )
 
 
 :echoname2
-ECHO Your Name  is %1
+echo got the file name: %1
 IF exist %1 (
+echo Creating a backup file of %1
 copy %1 %1.bck 
 notepad %1 
+echo "Editing :" %1
 goto exitt ) ELSE (
-echo "file not found"
+echo "file does not exists."
+echo Editing :" %1
 goto exitt )
 :exitt
-pause
