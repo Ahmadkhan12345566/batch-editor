@@ -18,14 +18,18 @@ goto echoname
 ) 
 
 :echoname
+if not defined name (
+echo Invalid input 
+goto exitt
+)
 IF exist %name% (
 echo Creating a backup file of %name%
 copy %name% %name%.bck 
 notepad %name% 
 echo "Editing :" %name%
 goto exitt ) ELSE (
-echo "file does not exists."
-echo Editing :" %name%
+echo file does not exists.
+echo Editing : %name%
 goto exitt )
 
 
@@ -37,7 +41,8 @@ copy %1 %1.bck
 notepad %1 
 echo "Editing :" %1
 goto exitt ) ELSE (
-echo "file does not exists."
-echo Editing :" %1
+echo file does not exists.
+echo Editing : %1
 goto exitt )
 :exitt
+set "name="
